@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edu2Career AI — Learn. Prove. Launch.</title>
+  <meta name="description" content="AI-powered learning, skill-gap detection, personalized roadmaps and internship readiness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="toast"></div>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <div class="brand" onclick="go('landing')">
+      <div class="brand-mark">E<span>2</span>C</div>
+      <div><strong>Edu2Career</strong><small>AI learning intelligence</small></div>
+    </div>
+    <div class="top-actions">
+      <button class="ghost" onclick="showHelp()">How it works</button>
+      <button class="pill-btn" onclick="go('onboarding')">Get started <span>→</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- LANDING -->
+    <section id="landing" class="screen active">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><i></i> AI-powered learning intelligence</div>
+          <h1>Don't study more.<br><em>Study what matters.</em></h1>
+          <p class="hero-sub">Edu2Career finds what you actually don't know, builds a focused roadmap, verifies improvement through questions, and takes you from learning gaps to career opportunities.</p>
+          <div class="hero-cta">
+            <button class="primary big" onclick="go('onboarding')">Build my roadmap <span>↗</span></button>
+            <button class="text-btn" onclick="scrollToFeature()">Explore the system ↓</button>
+          </div>
+          <div class="trust-row">
+            <span>✓ No fake completion</span>
+            <span>✓ Question-based progress</span>
+            <span>✓ Adaptive rescheduling</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="orbital">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="core-card">
+              <div class="core-ring"><span id="heroScore">72%</span></div>
+              <small>READINESS</small>
+              <strong>Career ready</strong>
+            </div>
+            <div class="float-chip chip-a">🧠 Weak topic detected</div>
+            <div class="float-chip chip-b">🎯 SQL · High priority</div>
+            <div class="float-chip chip-c">⚡ +24% improvement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-strip" id="features">
+        <div><b>01</b><strong>Diagnose</strong><span>Measure actual knowledge</span></div>
+        <div><b>02</b><strong>Detect</strong><span>Find weak & missing skills</span></div>
+        <div><b>03</b><strong>Adapt</strong><span>Roadmap changes with you</span></div>
+        <div><b>04</b><strong>Launch</strong><span>Match internships & jobs</span></div>
+      </div>
+
+      <div class="philosophy">
+        <div class="section-kicker">THE CORE LOOP</div>
+        <h2>Learning is not a checkbox.</h2>
+        <p>We only count progress that the student can demonstrate through questions, tests and improvement.</p>
+        <div class="loop">
+          <span>Learn</span><i>→</i><span>Attempt</span><i>→</i><span>Evaluate</span><i>→</i><span>Adapt</span><i>→</i><span>Re-test</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONBOARDING -->
+    <section id="onboarding" class="screen">
+      <div class="wizard-wrap">
+        <div class="wizard-head">
+          <button class="back" onclick="go('landing')">← Back</button>
+          <div class="progress"><span id="wizardProgress"></span></div>
+          <span id="stepLabel">01 / 04</span>
+        </div>
+
+        <div class="wizard-card">
+          <div class="step active" data-step="1">
+            <div class="section-kicker">FIRST, LET'S KNOW YOU</div>
+            <h2>Where are you on your journey?</h2>
+            <p>We'll adapt the assessment and roadmap to your level.</p>
+            <div class="choice-grid four">
+              <button class="choice" onclick="pick('stage',this,'School')"><span>🎒</span><b>School</b><small>Classes 8–12</small></button>
+              <button class="choice" onclick="pick('stage',this,'College')"><span>🎓</span><b>College</b><small>UG / PG student</small></button>
+              <button class="choice" onclick="pick('stage',this,'Graduate')"><span>🚀</span><b>Graduate</b><small>Job seeking</small></button>
+              <button class="choice" onclick="pick('stage',this,'Upskill')"><span>📈</span><b>Upskill</b><small>Working learner</small></button>
+            </div>
+          </div>
+
+          <div class="step" data-step="2">
+            <div class="section-kicker">CHOOSE YOUR TARGET</div>
+            <h2>What are you preparing for?</h2>
+            <p>Your target decides what skills and opportunities matter.</p>
+            <div class="choice-grid">
+              <button class="choice" onclick="pick('goal',this,'Exam')"><span>📚</span><b>Exam</b><small>Boards, entrance, semester</small></button>
+              <button class="choice" onclick="pick('goal',this,'Skill')"><span>🧩</span><b>Skill</b><small>Master a specific skill</small></button>
+              <button class="choice" onclick="pick('goal',this,'Career')"><span>💼</span><b>Career</b><small>Prepare for a role</small></button>
+              <button class="choice" onclick="pick('goal',this,'Internship')"><span>🌱</span><b>Internship</b><small>Become opportunity-ready</small></button>
+            </div>
+            <div class="input-row">
+              <label>Target role / exam / skill</label>
+              <input id="targetInput" placeholder="e.g. Data Analyst, JEE, Python..." oninput="state.target=this.value" />
+            </div>
+          </div>
+
+          <div class="step" data-step="3">
+            <div class="section-kicker">PERSONALIZE THE ENGINE</div>
+            <h2>How much time can you give daily?</h2>
+            <p>Your roadmap will stay inside this limit. No unrealistic timetables.</p>
+            <div class="time-picker">
+              <button onclick="setTime(this,30)">30 min</button>
+              <button class="selected" onclick="setTime(this,60)">1 hour</button>
+              <button onclick="setTime(this,90)">1.5 hours</button>
+              <button onclick="setTime(this,120)">2 hours</button>
+            </div>
+            <div class="mini-note"><span>↻</span> Missed tasks won't disappear. They'll be intelligently rescheduled.</div>
+          </div>
+
+          <div class="step" data-step="4">
+            <div class="section-kicker">READY FOR DIAGNOSIS</div>
+            <h2>Let's measure before we recommend.</h2>
+            <p>You'll answer a short diagnostic. Your progress starts from performance — not self-reported completion.</p>
+            <div class="assessment-preview">
+              <div><span>10</span><small>questions</small></div>
+              <div><span>4</span><small>skill areas</small></div>
+              <div><span>~8 min</span><small>estimated time</small></div>
+            </div>
+            <div class="guardrail"><b>🔒 Fair progress rule</b><br>Answers, mistakes, attempts and improvement are captured. Skipping a question does not mark a skill complete.</div>
+          </div>
+
+          <div class="wizard-footer">
+            <button class="ghost" id="prevBtn" onclick="prevStep()" style="visibility:hidden">Back</button>
+            <button class="primary" id="nextBtn" onclick="nextStep()">Continue →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSESSMENT -->
+    <section id="assessment" class="screen">
+      <div class="assessment-shell">
+        <div class="assessment-top">
+          <div><span class="section-kicker">INITIAL ASSESSMENT</span><h2>Show us what you know.</h2></div>
+          <div class="q-count"><b id="qNum">1</b> / 6</div>
+        </div>
+        <div class="question-card">
+          <div class="topic-tag" id="qTopic">Python Basics</div>
+          <h3 id="questionText">Which data type is used to store a sequence of characters in Python?</h3>
+          <div class="answers" id="answers"></div>
+          <div class="question-foot">
+            <span id="attemptInfo">Question must be attempted to continue.</span>
+            <button class="primary" id="answerBtn" onclick="submitAnswer()" disabled>Check answer</button>
+          </div>
+        </div>
+        <div class="assessment-note">Your answer history helps detect repeated mistakes. One wrong answer never labels a skill as weak by itself.</div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="screen">
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="side-brand"><div class="brand-mark">E<span>2</span>C</div><b>Edu2Career</b></div>
+          <button class="nav active" onclick="dashTab('overview',this)">◈ <span>Overview</span></button>
+          <button class="nav" onclick="dashTab('roadmap',this)">◎ <span>My Roadmap</span></button>
+          <button class="nav" onclick="dashTab('skills',this)">◇ <span>Skill Gaps</span></button>
+          <button class="nav" onclick="dashTab('opportunities',this)">↗ <span>Internships</span><i>4</i></button>
+          <button class="nav" onclick="dashTab('progress',this)">◒ <span>Progress</span></button>
+          <div class="side-bottom"><button class="nav">⚙ <span>Settings</span></button><div class="profile-mini"><div class="avatar">Y</div><div><b>Student</b><small id="profileStage">College</small></div></div></div>
+        </aside>
+
+        <div class="dashboard-main">
+          <div class="mobile-head"><div class="brand-mark">E<span>2</span>C</div><button onclick="showToast('Use the sidebar to explore your dashboard')">☰</button></div>
+          <div id="dash-overview" class="dash-tab active">
+            <div class="dash-header">
+              <div><span class="section-kicker">GOOD EVENING 👋</span><h1>Your career journey, <em>in motion.</em></h1><p>Here is what deserves your attention today.</p></div>
+              <div class="date-chip">Tuesday · Sep 8</div>
+            </div>
+            <div class="stats">
+              <div class="stat-card score-card"><span>READINESS SCORE</span><strong>72<span>%</span></strong><div class="meter"><i style="width:72%"></i></div><small>↑ 18% since your first assessment</small></div>
+              <div class="stat-card"><span>QUESTIONS SOLVED</span><strong>42</strong><small>31 correct · 11 mistakes</small></div>
+              <div class="stat-card"><span>LEARNING STREAK</span><strong>6 <small>days</small></strong><small>Best: 9 days</small></div>
+              <div class="stat-card"><span>SKILLS READY</span><strong>7<span>/10</span></strong><small>3 need attention</small></div>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="panel roadmap-panel">
+                <div class="panel-head"><div><span class="section-kicker">TODAY</span><h3>Adaptive roadmap</h3></div><button onclick="dashTab('roadmap')">View all →</button></div>
+                <div class="task urgent"><div class="task-icon">⌘</div><div class="task-body"><b>SQL — JOINs & Aggregation</b><span>Practice · 25 min · 5 questions</span><div class="task-status"><i></i> High priority</div></div><button class="start" onclick="startPractice()">Start →</button></div>
+                <div class="task"><div class="task-icon">▦</div><div class="task-body"><b>Statistics — Probability</b><span>Learn + practice · 20 min · 4 questions</span></div><button class="start" onclick="startPractice()">Start →</button></div>
+                <div class="task rescheduled"><div class="task-icon">↻</div><div class="task-body"><b>Power BI — Dashboard Basics</b><span>Rescheduled from yesterday · 15 min</span></div><span class="reschedule">RESCHEDULED</span></div>
+              </div>
+
+              <div class="panel focus-panel">
+                <div class="panel-head"><div><span class="section-kicker">FOCUS</span><h3>Your biggest gap</h3></div></div>
+                <div class="focus-ring"><span>48%</span></div>
+                <h3>SQL</h3><p>You've missed 5 of your last 9 SQL questions. Let's turn this into your next strength.</p>
+                <button class="primary full" onclick="startPractice()">Practice SQL →</button>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head"><div><span class="section-kicker">SKILL MAP</span><h3>Current vs target</h3></div><button onclick="dashTab('skills')">Analyse gaps →</button></div>
+              <div class="skill-bars">
+                <div><label>Python <b>88%</b></label><div><i style="width:88%"></i></div></div>
+                <div><label>Excel <b>82%</b></label><div><i style="width:82%"></i></div></div>
+                <div><label>Statistics <b>61%</b></label><div><i style="width:61%"></i></div></div>
+                <div><label>SQL <b>48%</b></label><div><i style="width:48%"></i></div></div>
+                <div><label>Power BI <b>43%</b></label><div><i style="width:43%"></i></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="dash-roadmap" class="dash-tab">
+            <div class="page-title"><span class="section-kicker">ADAPTIVE ROADMAP</span><h1>Your 7-day action plan</h1><p>Tasks move with your real performance. Nothing is marked complete without evidence.</p></div>
+            <div class="roadmap-timeline">
+              <div class="day done"><div class="day-dot">✓</div><div><span>MON · SEP 7</span><h3>Python Revision</h3><p>8/8 questions correct · Mastered</p></div><b>100%</b></div>
+              <div class="day today"><div class="day-dot">02</div><div><span>TUE · SEP 8 · TODAY</span><h3>SQL JOINs + Statistics</h3><p>9 questions · 45 min · High priority</p><button class="primary small" onclick="startPractice()">Begin session</button></div><b>48%</b></div>
+              <div class="day"><div class="day-dot">03</div><div><span>WED · SEP 9</span><h3>Power BI + SQL Practice</h3><p>Planned · adapts after today's test</p></div><b>43%</b></div>
+              <div class="day"><div class="day-dot">04</div><div><span>THU · SEP 10</span><h3>Statistics Application</h3><p>Planned · 30 min</p></div><b>61%</b></div>
+            </div>
+          </div>
+
+          <div id="dash-skills" class="dash-tab">
+            <div class="page-title"><span class="section-kicker">SKILL GAP ENGINE</span><h1>What should you learn next?</h1><p>Your target: <b id="targetDisplay">Data Analyst</b>. We compare demonstrated skills against target requirements.</p></div>
+            <div class="gap-grid">
+              <div class="gap-card strong"><span>✓</span><div><b>Python</b><small>Strong · 88%</small></div><em>Matched</em></div>
+              <div class="gap-card strong"><span>✓</span><div><b>Excel</b><small>Strong · 82%</small></div><em>Matched</em></div>
+              <div class="gap-card warning"><span>!</span><div><b>Statistics</b><small>Improving · 61%</small></div><em>Practice</em></div>
+              <div class="gap-card critical"><span>×</span><div><b>SQL</b><small>Needs attention · 48%</small></div><em>Priority 1</em></div>
+              <div class="gap-card critical"><span>×</span><div><b>Power BI</b><small>Needs attention · 43%</small></div><em>Priority 2</em></div>
+              <div class="gap-card missing"><span>?</span><div><b>Data Storytelling</b><small>Not assessed yet</small></div><em>Assess</em></div>
+            </div>
+            <div class="explain panel"><span>💡</span><div><b>Why SQL is #1?</b><p>You have the largest demonstrated gap against your target role and 5 recent mistakes. Fixing it gives the highest readiness improvement per minute.</p></div></div>
+          </div>
+
+          <div id="dash-opportunities" class="dash-tab">
+            <div class="page-title"><span class="section-kicker">OPPORTUNITIES</span><h1>Internships that match your skills</h1><p>Recommendations explain the skill match instead of blindly showing listings.</p></div>
+            <div class="opps">
+              <div class="opp-card"><div class="company-logo">N</div><div class="opp-main"><span>ANALYTICS · REMOTE</span><h3>Data Analyst Intern</h3><p>Nova Insights · 3 months</p><div class="tags"><i>Python</i><i>Excel</i><i>SQL</i></div></div><div class="match"><b>78%</b><small>match</small><button onclick="showToast('Application tracker opened — demo')">View →</button></div></div>
+              <div class="opp-card"><div class="company-logo">F</div><div class="opp-main"><span>FINTECH · HYBRID</span><h3>Business Analytics Intern</h3><p>FinEdge · 6 months</p><div class="tags"><i>Excel</i><i>Power BI</i><i>Stats</i></div></div><div class="match"><b>71%</b><small>match</small><button onclick="showToast('Application tracker opened — demo')">View →</button></div></div>
+              <div class="opp-card"><div class="company-logo">D</div><div class="opp-main"><span>SAAS · ON-SITE</span><h3>Product Data Intern</h3><p>Dashly · 4 months</p><div class="tags"><i>SQL</i><i>Python</i><i>Analytics</i></div></div><div class="match"><b>66%</b><small>match</small><button onclick="showToast('Application tracker opened — demo')">View →</button></div></div>
+            </div>
+          </div>
+
+          <div id="dash-progress" class="dash-tab">
+            <div class="page-title"><span class="section-kicker">PROGRESS INTELLIGENCE</span><h1>Proof of improvement</h1><p>Your dashboard is built from attempts, answers and repeated performance.</p></div>
+            <div class="progress-grid">
+              <div class="panel"><span class="section-kicker">ACCURACY TREND</span><div class="chart"><div style="height:42%"><b>48</b></div><div style="height:49%"><b>52</b></div><div style="height:60%"><b>61</b></div><div style="height:64%"><b>65</b></div><div style="height:72%"><b>72</b></div></div><div class="chart-labels"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>NOW</span></div></div>
+              <div class="panel evidence"><span class="section-kicker">EVIDENCE LOG</span><div><b>42</b><span>Questions attempted</span></div><div><b>11</b><span>Mistakes captured</span></div><div><b>6</b><span>Re-attempts</span></div><div><b>18%</b><span>Readiness gained</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="helpModal">
+    <div class="modal-card"><button class="close" onclick="hideHelp()">×</button><span class="section-kicker">HOW IT WORKS</span><h2>Not another AI chatbot.</h2><p>Edu2Career continuously connects <b>assessment → weak topics → skill gaps → roadmap → questions → re-assessment → readiness → internships/jobs.</b></p><div class="modal-flow"><span>Assess</span><i>→</i><span>Learn</span><i>→</i><span>Prove</span><i>→</i><span>Launch</span></div><button class="primary full" onclick="hideHelp();go('onboarding')">Build my roadmap</button></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
